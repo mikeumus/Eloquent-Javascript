@@ -21,11 +21,11 @@ So if you solved it, you’re now allowed to feel good about yourself.)
 	// Laymen answer: 
 	for(var i = 1; i<=100; i++){				// Loop through 100.
 		console.log(i);										// Print number of current loop.
-		if(i%3 == 0 && i%5 == 0){					// If the current loop number is divided by 3 with no remainder and same for dividing it by 5, then:
+		if(i%3 === 0 && i%5 === 0){					// If the current loop number is divided by 3 with no remainder and same for dividing it by 5, then:
 			console.log(i+" FizzBuzz");			// Print "FizzBuzz".
-		}	else if(i%3 == 0){							// else if the current number is divided by 3 with zero remainder:
+		}	else if(i%3 === 0){							// else if the current number is divided by 3 with zero remainder:
 			console.log(i+" Fizz");					// Print "Fizz".
-		} else if(i%5 == 0){							// else if the current number is divded by 5 with 0 remainder, then:
+		} else if(i%5 === 0){							// else if the current number is divded by 5 with 0 remainder, then:
 			console.log(i+" Buzz");					// Just print "Buzz".
 		}																	// End all if/ else if conditions.
 	}																		// Closing bracket of 1 -> 100 loop from above. 
@@ -33,9 +33,9 @@ So if you solved it, you’re now allowed to feel good about yourself.)
 	// Eloquent Answer: 
 	for (var n = 1; n <= 100; n++) {
 	var output = "";
-	if (n % 3 == 0)
+	if (n % 3 === 0)
 		output += "Fizz";
-	if (n % 5 == 0)
+	if (n % 5 === 0)
 		output += "Buzz";
 		console.log(output || n);
 	}	
