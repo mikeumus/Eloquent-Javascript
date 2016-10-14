@@ -1,45 +1,52 @@
 /* 
-# Eloquent JavaScript, Chapter 3: Functions, Exercise 3
-## Bean Counting
+# Eloquent JavaScript, Chapter 4: Data Structures, Exercise 1
+## The Sum of a Range
 
-You can get the Nth character, or letter, from a string by writing "string".charAt(N),
-similar to how you get its length with "s".length. The returned value will be a string
-containing only one character (for example, "b"). The first character has position zero,
-which causes the last one to be found at position string.length - 1. In other words,
-a two-character string has length 2, and its characters have positions 0 and 1.
+The introduction of this book alluded to the following as a nice way to compute the sum 
+of a range of numbers:
 
-Write a function countBs that takes a string as its only argument and returns a number
-that indicates how many uppercase “B” characters are in the string.
+console.log(sum(range(1, 10)));
+Write a range function that takes two arguments, start and end, and returns an array
+containing all the numbers from start up to (and including) end.
 
-Next, write a function called countChar that behaves like countBs, except it takes a
-second argument that indicates the character that is to be counted (rather than counting
-only uppercase “B” characters). Rewrite countBs to make use of this new function.
+Next, write a sum function that takes an array of numbers and returns the sum of these
+numbers. Run the previous program and see whether it does indeed return 55.
 
-// Your code here.
-
-console.log(countBs("BBC"));
-// → 2
-console.log(countChar("kakkerlak", "k"));
-// → 4
+As a bonus assignment, modify your range function to take an optional third argument that
+indicates the “step” value used to build up the array. If no step is given, the array
+elements go up by increments of one, corresponding to the old behavior. The function call
+range(1, 10, 2) should return [1, 3, 5, 7, 9]. Make sure it also works with negative step
+values so that range(5, 2, -1) produces [5, 4, 3, 2].
 
 */
 
 (function(){ // This is our self envoking closure. We do this to keep the global environment pure. 
 	
-	function countChar(stringBeans, ch){
-		var beans = 0;
-		for(var i=0;i<stringBeans.length;i++){
-			if(stringBeans.charAt(i) === ch)
-				beans += 1;
-		}
-		return beans; 
+	function range(start, end, step) {
+		if (step == null) step = 1;
+		var arr = [];
+		
+		if (step > 0)
+			for (var i = start; i <= end; i += step) 
+				arr.push(i);
+		else 
+			for (var i = start; i >= end; i += step) 
+				arr.push(i);
+		return arr;
 	}
 
-	function countBs(stringBeans){
-		return countChar(stringBeans, "B");
+	function sum(arr) {
+		let sumArr = 0;
+		for (let i = 0; i < arr.length; i++)
+			sumArr += arr[i];
+		return sumArr;
 	}
-	
-	console.log(countBs("BBC"));
-	console.log(countChar("kakkerlak", "k"));
+
+	console.log(range(1, 10));
+	// → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	console.log(range(5, 2, -1));
+	// → [5, 4, 3, 2]
+	console.log(sum(range(1, 10)));
+	// → 55
 
 })();
