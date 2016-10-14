@@ -12,7 +12,7 @@ console.log(min(0, -10));
 
 */
 
-(function(){ // This is our self envoking closure. We do this to keep the global environment pure. 
+(function(){ // This is our self invoking closure. We do this to keep the global environment pure. 
 	
 	// Long obvious answer: 
 	function min(arg1, arg2){
